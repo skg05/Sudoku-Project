@@ -1,4 +1,5 @@
 import math,random
+from os import remove
 
 """
 This was adapted from a GeeksforGeeks article "Program for Sudoku Generator" by Aarti_Rathi and Ankur Trisal
@@ -22,9 +23,11 @@ class SudokuGenerator:
 	Return:
 	None
     '''
-    def __init__(self, row_length, removed_cells):
-        pass
-
+    def __init__(self, removed_cells, row_length = 9):
+        self.row_length = row_length
+        self.removed_cells = removed_cells
+        self.board = [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]]
+        self.box_length = row_length**.5
     '''
 	Returns a 2D python list of numbers which represents the board
 
@@ -42,7 +45,8 @@ class SudokuGenerator:
 	Return: None
     '''
     def print_board(self):
-        pass
+        for item in self.board:
+            print(item)
 
     '''
 	Determines if num is contained in the specified row (horizontal) of the board
@@ -119,8 +123,24 @@ class SudokuGenerator:
 	Return: None
     '''
     def fill_diagonal(self):
-        pass
-
+        avaliable_number = [1,2,3,4,5,6,7,8,9]
+        for y in range(3):
+            for i in range(3):
+                picked_number = random.choice(avaliable_number)
+                avaliable_number.remove(picked_number)
+                self.board[y][i].append(picked_number)
+        avaliable_number = [1,2,3,4,5,6,7,8,9]
+        for y in range(3,6):
+            for i in range(3,6):
+                picked_number = random.choice(avaliable_number)
+                avaliable_number.remove(picked_number)
+                self.board[y][i].append(picked_number)
+        avaliable_number = [1,2,3,4,5,6,7,8,9]
+        for y in range(6,9):
+            for i in range(6,9):
+                picked_number = random.choice(avaliable_number)
+                avaliable_number.remove(picked_number)
+                self.board[y][i].append(picked_number)
     '''
     DO NOT CHANGE
     Provided for students
@@ -209,3 +229,7 @@ def generate_sudoku(size, removed):
     sudoku.remove_cells()
     board = sudoku.get_board()
     return board
+
+a = SudokuGenerator(5)
+a.fill_values()
+a.print_board()
