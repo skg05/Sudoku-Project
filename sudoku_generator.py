@@ -26,7 +26,7 @@ class SudokuGenerator:
     def __init__(self, removed_cells, row_length = 9):
         self.row_length = row_length
         self.removed_cells = removed_cells
-        self.board = [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]],   [[],[],[],[],[],[],[],[],[]]
+        self.board = [[0 for i in range(9)] for j in range(9)]
         self.box_length = row_length**.5
     '''
 	Returns a 2D python list of numbers which represents the board
@@ -123,24 +123,30 @@ class SudokuGenerator:
 	Return: None
     '''
     def fill_diagonal(self):
-        avaliable_number = [1,2,3,4,5,6,7,8,9]
-        for y in range(3):
-            for i in range(3):
-                picked_number = random.choice(avaliable_number)
-                avaliable_number.remove(picked_number)
-                self.board[y][i].append(picked_number)
+        my_list = []
+        for item in [0,3,6,9]:
+            if len(my_list) != 2:
+                my_list.append(item)
+                continue
+            else:
+            avaliable_number = [1,2,3,4,5,6,7,8,9]
+            for y in range(3): #0,1,2
+                for i in range(3): #0,1,2
+                    picked_number = random.choice(avaliable_number)
+                    avaliable_number.remove(picked_number)
+                    self.board[y][i] = picked_number
         avaliable_number = [1,2,3,4,5,6,7,8,9]
         for y in range(3,6):
             for i in range(3,6):
                 picked_number = random.choice(avaliable_number)
                 avaliable_number.remove(picked_number)
-                self.board[y][i].append(picked_number)
+                self.board[y][i] = picked_number
         avaliable_number = [1,2,3,4,5,6,7,8,9]
         for y in range(6,9):
             for i in range(6,9):
                 picked_number = random.choice(avaliable_number)
                 avaliable_number.remove(picked_number)
-                self.board[y][i].append(picked_number)
+                self.board[y][i] = picked_number
     '''
     DO NOT CHANGE
     Provided for students
@@ -231,5 +237,6 @@ def generate_sudoku(size, removed):
     return board
 
 a = SudokuGenerator(5)
-a.fill_values()
+# a.fill_values()
+a.fill_diagonal()
 a.print_board()
