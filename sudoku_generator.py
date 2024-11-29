@@ -233,7 +233,17 @@ class SudokuGenerator:
     '''
 
     def remove_cells(self):
-        pass
+        count = 0
+        while count < 30:
+            col_to_pick_from = random.choice(list(range(9))) #random col to pick an index from
+            row_in_col = random.choice(list(range(9))) #random row in said col
+            if self.board[col_to_pick_from][row_in_col] != 0:
+                self.board[col_to_pick_from][row_in_col] = 0
+                count += 1
+            else:
+                continue
+
+
 
 
 '''
@@ -261,6 +271,7 @@ def generate_sudoku(size, removed):
     board = sudoku.get_board()
     return board
 
-a = SudokuGenerator(5)
-a.fill_values()
-a.print_board()
+# a = SudokuGenerator(30)
+# a.fill_values()
+# a.remove_cells()
+# a.print_board()
