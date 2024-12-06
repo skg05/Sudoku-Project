@@ -204,3 +204,171 @@ while True:
                     myboard.place_number(9)
 
     pygame.display.update()
+#from sudoku_generator import *
+#import pygame
+
+#class Board:
+ #   """Represents the Sudoku game board with all functionality."""
+
+  #  def __init__(self, width, height, screen, difficulty):
+   #     self.width = width
+    #    self.height = height
+     #   self.screen = screen
+      #  self.difficulty = difficulty
+       # self.row = 0
+      #  self.col = 0
+      #  self.difficulty_dict = {'easy': 30, 'medium': 40, 'hard': 50}
+       # self.user_sudoku = SudokuGenerator(self.difficulty_dict[difficulty])
+        #self.user_sudoku.fill_values()
+        #self.answer = [[], [], [], [], [], [], [], [], []]
+        #for i in range(0, 9):
+         #   for j in range(0, 9):
+          #      self.answer[i].append(self.user_sudoku.get_board()[i][j])
+        #self.user_sudoku.remove_cells()
+        #self.original_board = [[], [], [], [], [], [], [], [], []]
+        #for i in range(0, 9):
+         #   for j in range(0, 9):
+          #      self.original_board[i].append(self.user_sudoku.get_board()[i][j])
+        #self.user_board = self.user_sudoku.get_board()
+
+    #def draw(self):
+     #   """Draws the Sudoku grid with bold lines for 3x3 boxes."""
+      #  for i in range(0, 9):
+       #     if i % 3 == 0:
+        #        pygame.draw.line(
+         #           self.screen,
+          #          "black",
+           #         (0, i * 67),
+            #        (603, i * 67),
+             #       10)
+            #else:
+             #   pygame.draw.line(
+              #      self.screen,
+               #     "black",
+                #    (0, i * 67),
+                 #   (603, i * 67),
+                  #  4)
+
+        #for i in range(0, 9):
+         #   if i % 3 == 0:
+          #      pygame.draw.line(
+           #         self.screen,
+            #        "black",
+             #       (i * 67, 0),
+              #      (i * 67, 603),
+               #     10)
+            #else:
+             #   pygame.draw.line(
+              #      self.screen,
+               #     "black",
+                #    (i * 67, 0),
+                 #   (i * 67, 603),
+                  #  4)
+
+    #def fill_board(self):
+     #   """Fills the board with initial values from the original board."""
+      #  for i in range(0, 9):
+       #     for j in range(0, 9):
+        #        if self.original_board[i][j] != 0:
+         #           self.row = j
+          #          self.col = i
+           #         self.place_number(self.original_board[i][j])
+
+#    def select(self, row, col):
+ #       """Marks a cell as selected."""
+  #      Board.draw(self)
+   #     self.row = row
+    #    self.col = col
+     #   pygame.draw.rect(self.screen, "red", (row * 67, col * 67, 70, 70), 3)
+
+    #def click(self, row, col):
+     #   """Returns the cell position based on click coordinates."""
+      #  return (row // 67, col // 67)
+
+    #def clear(self):
+     #   """Clears the value of the selected cell."""
+      #  pygame.draw.rect(self.screen, "white", (self.row * 67 + 3, self.col * 67 + 3, 63, 63))
+       # self.update_board(0)
+
+#    def sketch(self, value):
+ #       """Sketches a number in the selected cell."""
+  #      sketch_font = pygame.font.Font(None, 20)
+   #     sketch_surf = sketch_font.render(str(value), 5, "black")
+    #    sketch_rect = sketch_surf.get_rect(topleft=(self.row * 67 + 10, self.col * 67 + 10))
+     #   pygame.draw.rect(self.screen, "white", (self.row * 67 + 10, self.col * 67 + 10, 12, 12))
+      #  self.screen.blit(sketch_surf, sketch_rect)
+
+    #def place_number(self, value):
+     #   """Places a number in the selected cell."""
+      #  num_font = pygame.font.Font(None, 60)
+       # num_surf = num_font.render(str(value), 10, "black")
+        #num_rect = num_surf.get_rect(topleft=(self.row * 67 + 25, self.col * 67 + 20))
+       # pygame.draw.rect(self.screen, "white", (self.row * 67 + 25, self.col * 67 + 20, 30, 40))
+       # self.screen.blit(num_surf, num_rect)
+        #self.update_board(value)
+
+   # def reset_to_original(self):
+    #    """Resets the board to its initial state."""
+     #   self.screen.fill("white")
+      #  self.draw()
+       # self.fill_board()
+
+    #def is_full(self):
+     #   """Checks if the board is completely filled."""
+      #  for i in range(0, 9):
+       #     for j in range(0, 9):
+        #        if self.user_board[i][j] == 0:
+         #           return False
+       # return True
+
+    #def update_board(self, value):
+     #   """Updates the value of the selected cell in the board."""
+      #  self.user_board[self.col][self.row] = value
+
+    #def find_empty(self):
+     #   """Finds an empty cell in the board."""
+      #  for i in range(0, 9):
+       #     for j in range(0, 9):
+        #        if self.user_board[i][j] == 0:
+         #           return (i, j)
+        #return False
+
+    #def check_board(self):
+     #   """Checks if the board matches the solution."""
+      #  for i in range(0, 9):
+       #     for j in range(0, 9):
+        #        if self.user_board[i][j] != self.answer[i][j]:
+         #           return False
+       # return True
+
+
+# Ensure the code below only runs if this script is executed directly
+#if __name__ == "__main__":
+ #   pygame.init()
+  #  sketch = False
+   # screen = pygame.display.set_mode((603, 603))
+    #screen.fill("white")
+    #myboard = Board(603, 603, screen, "hard")
+ #   myboard.draw()
+  #  myboard.fill_board()
+   # print("userboard", myboard.user_board)
+ #   print("answer", myboard.answer)
+  #  print("ogr", myboard.original_board)
+   # myboard.user_sudoku.print_board()
+
+ #   while True:
+  #      for event in pygame.event.get():
+   #         if event.type == pygame.QUIT:
+    #            pygame.quit()
+     #           exit()
+      #      if event.type == pygame.MOUSEBUTTONDOWN:
+       #         x, y = event.pos
+        #        if myboard.original_board[y // 67][x // 67] == 0:
+         #           myboard.select(x // 67, y // 67)
+          #  if event.type == pygame.KEYDOWN:
+           #     if event.key == pygame.K_SPACE:
+            #        myboard.reset_to_original()
+             #   if event.key == pygame.K_c:
+              #      myboard.clear()
+               # if event.key == pygame.K_1:
+                #    myboard.place_number(1)
